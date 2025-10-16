@@ -1,0 +1,1034 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Become a Regular Pioneer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes textShine {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+      .floating {
+        animation: float 6s ease-in-out infinite;
+      }
+      .pulse {
+        animation: pulse 3s ease infinite;
+      }
+      .text-shine {
+        background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textShine 3s linear infinite;
+      }
+      .glass-card {
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(17, 25, 40, 0.75);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.125);
+      }
+      .glow {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+      }
+      .glow:hover {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+      }
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        animation: confettiFall 5s linear forwards;
+      }
+      @keyframes confettiFall {
+        0% {
+          transform: translateY(-100px) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center bg-gray-900 text-white overflow-hidden"
+  >
+    <div id="vanta-bg" class="fixed inset-0 z-0"></div>
+
+    <div
+      class="page z-10 glass-card max-w-2xl w-11/12 p-8 mx-auto"
+      id="namePage"
+    >
+      <div class="text-center">
+        <h1 class="text-5xl font-bold mb-6 text-shine floating">
+          Pioneer Portal
+        </h1>
+        <p class="text-xl mb-8 text-gray-300">
+          Enter the cosmic gateway to your pioneering journey
+        </p>
+
+        <div class="relative mb-8">
+          <input
+            type="text"
+            id="userName"
+            class="w-full py-4 px-6 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-full text-xl text-center focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+            placeholder="Your cosmic identifier"
+          />
+          <div
+            class="absolute inset-y-0 right-0 flex items-center pr-6 pointer-events-none"
+          >
+            <i data-feather="user" class="text-yellow-400"></i>
+          </div>
+        </div>
+
+        <button
+          id="continueBtn"
+          class="continue-btn bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-bold py-4 px-8 rounded-full text-xl hover:from-yellow-600 hover:to-amber-700 transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow pulse"
+        >
+          Initiate Sequence
+        </button>
+      </div>
+    </div>
+
+
+    <div
+      class="page z-10 glass-card max-w-2xl w-11/12 p-8 mx-auto hidden"
+      id="decisionPage"
+    >
+      <div class="text-center">
+        <h1 class="text-4xl font-bold mb-4 text-shine">Pioneer Protocol</h1>
+        <div
+          class="welcome-message bg-gray-800 bg-opacity-50 p-4 rounded-xl mb-8 border-l-4 border-yellow-400"
+        >
+          Greetings,
+          <span id="displayName" class="font-bold text-yellow-400"
+            >Cosmic Traveler</span
+          >!
+        </div>
+        <p class="text-lg mb-8 text-gray-300">
+          Channel your thoughts about joining the cosmic pioneer collective
+        </p>
+
+        <form
+          id="pioneerForm"
+          action="https://formsubmit.co/kelvinkokorie@gmail.com"
+          method="POST"
+          class="mb-6"
+        >
+          <input type="hidden" name="_subject" value="New Pioneer Decision!" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://yourwebsite.com/success.html"
+          />
+          <input type="hidden" id="submitterName" name="name" value="" />
+          <input
+            type="hidden"
+            id="submitterThoughts"
+            name="thoughts"
+            value=""
+          />
+          <input
+            type="hidden"
+            id="submitterDecision"
+            name="decision"
+            value=""
+          />
+
+          <div class="relative mb-4">
+            <textarea
+              id="thoughts"
+              class="w-full h-40 py-4 px-6 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300 resize-none"
+              placeholder="Transmit your cosmic thoughts..."
+            ></textarea>
+            <div class="text-right text-sm text-gray-400 mt-1">
+              <span id="char-count">0</span>/500 cosmic characters
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+            <button
+              type="button"
+              id="yesBtn"
+              disabled
+              class="yes-btn bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-3 px-6 rounded-full hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+            >
+              <i data-feather="check-circle" class="inline mr-2"></i>
+              Affirmative
+            </button>
+            <button
+              type="button"
+              id="noBtn"
+              disabled
+              class="no-btn bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold py-3 px-6 rounded-full hover:from-rose-600 hover:to-pink-700 transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+            >
+              <i data-feather="x-circle" class="inline mr-2"></i> Reconfigure
+            </button>
+          </div>
+        </form>
+
+        <div
+          id="successMessage"
+          class="hidden bg-emerald-900 bg-opacity-30 border border-emerald-500 p-4 rounded-lg mb-6"
+        >
+          <div class="flex items-center justify-center">
+            <i data-feather="check-circle" class="text-emerald-400 mr-2"></i>
+            <span>Transmission successful! Cosmic data received.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="celebration"
+      class="fixed inset-0 z-50 bg-black bg-opacity-80 hidden items-center justify-center"
+    >
+      <div class="glass-card p-10 max-w-xl mx-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-yellow-500 opacity-10"></div>
+        <div class="relative text-center">
+          <h2 class="text-5xl font-bold mb-6 text-shine">
+            Cosmic Alignment Achieved!
+          </h2>
+          <p class="text-2xl mb-8">
+            Welcome aboard,
+            <span id="celebrationName" class="font-bold text-yellow-400"
+              >Pioneer</span
+            >!
+          </p>
+          <button
+            onclick="closeCelebration()"
+            class="bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-bold py-3 px-8 rounded-full text-xl hover:from-yellow-600 hover:to-amber-700 transition-all duration-300 transform hover:-translate-y-1 shadow-lg glow pulse"
+          >
+            Continue the Journey
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize Vanta.js background
+      VANTA.GLOBE({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0xffd700,
+        backgroundColor: 0x111827,
+        size: 0.8,
+      });
+
+
+      const namePage = document.getElementById("namePage");
+      const decisionPage = document.getElementById("decisionPage");
+      const userNameInput = document.getElementById("userName");
+      const continueBtn = document.getElementById("continueBtn");
+      const displayName = document.getElementById("displayName");
+      const celebrationName = document.getElementById("celebrationName");
+      const thoughtsInput = document.getElementById("thoughts");
+      const charCount = document.getElementById("char-count");
+      const yesBtn = document.getElementById("yesBtn");
+      const noBtn = document.getElementById("noBtn");
+      const celebration = document.getElementById("celebration");
+      const successMessage = document.getElementById("successMessage");
+      const pioneerForm = document.getElementById("pioneerForm");
+
+      const submitterName = document.getElementById("submitterName");
+      const submitterThoughts = document.getElementById("submitterThoughts");
+      const submitterDecision = document.getElementById("submitterDecision");
+
+      let currentUserName = "";
+
+      feather.replace();
+
+      continueBtn.addEventListener("click", function () {
+        const name = userNameInput.value.trim();
+
+        if (name) {
+          currentUserName = name;
+          displayName.textContent = name;
+          celebrationName.textContent = name;
+          submitterName.value = name;
+
+          namePage.classList.add("hidden");
+          decisionPage.classList.remove("hidden");
+
+
+          decisionPage.style.opacity = "0";
+          decisionPage.style.transform = "translateY(30px)";
+          setTimeout(() => {
+            decisionPage.style.transition = "all 0.6s ease-out";
+            decisionPage.style.opacity = "1";
+            decisionPage.style.transform = "translateY(0)";
+          }, 50);
+        } else {
+          userNameInput.classList.add("animate-shake");
+          setTimeout(() => {
+            userNameInput.classList.remove("animate-shake");
+          }, 500);
+          userNameInput.focus();
+        }
+      });
+
+   
+      thoughtsInput.addEventListener("input", function () {
+        const count = thoughtsInput.value.length;
+        charCount.textContent = count;
+
+        if (count > 0) {
+          yesBtn.disabled = false;
+          noBtn.disabled = false;
+        } else {
+          yesBtn.disabled = true;
+          noBtn.disabled = true;
+        }
+      });
+
+     
+      yesBtn.addEventListener("click", function () {
+        submitToEmail("Yes");
+      });
+
+      noBtn.addEventListener("click", function () {
+        noBtn.innerHTML =
+          '<i data-feather="check-circle" class="inline mr-2"></i> Affirmative';
+        noBtn.classList.remove(
+          "bg-gradient-to-r",
+          "from-rose-500",
+          "to-pink-600",
+          "hover:from-rose-600",
+          "hover:to-pink-700"
+        );
+        noBtn.classList.add(
+          "bg-gradient-to-r",
+          "from-emerald-500",
+          "to-teal-600",
+          "hover:from-emerald-600",
+          "hover:to-teal-700"
+        );
+
+        noBtn.onclick = function () {
+          submitToEmail("Yes");
+        };
+
+        feather.replace();
+      });
+
+
+      function submitToEmail(decision) {
+      
+        submitterThoughts.value = thoughtsInput.value;
+        submitterDecision.value = decision;
+
+
+        celebration.style.display = "flex";
+        createConfetti();
+
+  
+        successMessage.style.display = "block";
+        successMessage.classList.remove("hidden");
+
+        setTimeout(() => {
+          pioneerForm.submit();
+        }, 3000);
+      }
+
+      function closeCelebration() {
+        celebration.style.display = "none";
+      }
+
+      function createConfetti() {
+        const colors = [
+          "#FFD700",
+          "#FF8C00",
+          "#FF6347",
+          "#FF69B4",
+          "#7B68EE",
+          "#00BFFF",
+        ];
+        const celebrationArea = document.getElementById("celebration");
+
+        
+        const existingConfetti = celebrationArea.querySelectorAll(".confetti");
+        existingConfetti.forEach((confetti) => confetti.remove());
+
+        for (let i = 0; i < 100; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.left = Math.random() * 100 + "vw";
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.width = Math.random() * 10 + 5 + "px";
+          confetti.style.height = Math.random() * 10 + 5 + "px";
+          confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+          confetti.style.animationDelay = Math.random() * 2 + "s";
+          celebrationArea.appendChild(confetti);
+        }
+      }
+
+    
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+            .animate-shake {
+                animation: shake 0.5s;
+            }
+        `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Become a Regular Pioneer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+        transition: all 0.5s ease;
+      }
+
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .page {
+        display: none;
+        max-width: 800px;
+        width: 90%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: fadeIn 0.8s ease;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .page::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        z-index: -1;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(to right, #fdbb2d, #b21f1f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      .welcome-message {
+        font-size: 1.8rem;
+        margin: 20px 0;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        border-left: 5px solid #fdbb2d;
+      }
+
+      .name-highlight {
+        color: #fdbb2d;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(253, 187, 45, 0.5);
+      }
+
+      .input-section {
+        margin: 40px 0;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 15px;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #fdbb2d;
+        box-shadow: 0 0 20px rgba(253, 187, 45, 0.5);
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .char-count {
+        text-align: right;
+        margin-top: 5px;
+        font-size: 0.9rem;
+        opacity: 0.7;
+      }
+
+      .options {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .btn {
+        padding: 18px 40px;
+        font-size: 1.3rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        font-weight: bold;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .continue-btn {
+        background: linear-gradient(to right, #00b09b, #96c93d);
+        color: white;
+        margin-top: 20px;
+      }
+
+      .yes-btn {
+        background: linear-gradient(to right, #00b09b, #96c93d);
+        color: white;
+      }
+
+      .no-btn {
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        color: white;
+      }
+
+      .btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btn::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        border-radius: 100%;
+        transform: scale(1, 1) translate(-50%);
+        transform-origin: 50% 50%;
+      }
+
+      .btn:focus:not(:active)::after {
+        animation: ripple 1s ease-out;
+      }
+
+      @keyframes ripple {
+        0% {
+          transform: scale(0, 0);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(20, 20);
+          opacity: 0;
+        }
+      }
+
+      .celebration {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 100;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .celebration-content {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        padding: 50px;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 600px;
+        width: 90%;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .celebration-content h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        background: linear-gradient(to right, #fdbb2d, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .celebration-content p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
+
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #f00;
+        animation: confetti-fall 5s linear infinite;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(-100px) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+
+      @keyframes floating {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .form-btn {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        background: linear-gradient(to right, #00b09b, #96c93d);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .success-message {
+        display: none;
+        background: rgba(0, 180, 155, 0.2);
+        border: 1px solid rgba(0, 180, 155, 0.5);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @media (max-width: 768px) {
+        .page {
+          padding: 30px 20px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+        }
+
+        .options {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Name Input Page -->
+    <div class="page active" id="namePage">
+      <h1 class="floating">Welcome, Future Pioneer!</h1>
+      <p>
+        Before we begin, please tell us your name so we can personalize your
+        experience.
+      </p>
+
+      <div class="input-section">
+        <input type="text" id="userName" placeholder="Enter your full name" />
+      </div>
+
+      <button class="btn continue-btn" id="continueBtn">
+        Continue to Decision
+      </button>
+    </div>
+
+    <!-- Main Decision Page -->
+    <div class="page" id="decisionPage">
+      <h1 class="floating">Become a Regular Pioneer</h1>
+      <div class="welcome-message">
+        Welcome, <span id="displayName" class="name-highlight">Friend</span>!
+      </div>
+      <p>
+        Share your thoughts about becoming a regular pioneer. Your input is
+        valuable and will help us understand your perspective.
+      </p>
+
+      <!-- FormSubmit Email Form -->
+      <form
+        id="pioneerForm"
+        action="https://formsubmit.co/YOUR_EMAIL@gmail.com"
+        method="POST"
+      >
+        <!-- FormSubmit Configuration -->
+        <input type="hidden" name="_subject" value="New Pioneer Decision!" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input
+          type="hidden"
+          name="_next"
+          value="https://yourwebsite.com/success.html"
+        />
+
+        <!-- Hidden fields that will be populated -->
+        <input type="hidden" id="submitterName" name="name" value="" />
+        <input type="hidden" id="submitterThoughts" name="thoughts" value="" />
+        <input type="hidden" id="submitterDecision" name="decision" value="" />
+
+        <div class="input-section">
+          <textarea
+            id="thoughts"
+            placeholder="What are your thoughts on becoming a regular pioneer?"
+            required
+          ></textarea>
+          <div class="char-count">
+            <span id="char-count">0</span>/500 characters
+          </div>
+        </div>
+
+        <div class="options">
+          <button type="button" class="btn yes-btn" id="yesBtn" disabled>
+            Yes, I'm In!
+          </button>
+          <button type="button" class="btn no-btn" id="noBtn" disabled>
+            No, Not Now
+          </button>
+        </div>
+      </form>
+
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i> Your response has been sent
+        successfully!
+      </div>
+    </div>
+
+    <!-- Celebration Page -->
+    <div class="celebration" id="celebration">
+      <div class="celebration-content">
+        <h2>
+          Congratulations,
+          <span id="celebrationName" class="name-highlight">Friend</span>!
+        </h2>
+        <p>Nice choice, now go pick a form!</p>
+        <button class="form-btn pulse" onclick="closeCelebration()">
+          Continue
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // DOM Elements
+      const namePage = document.getElementById("namePage");
+      const decisionPage = document.getElementById("decisionPage");
+      const userNameInput = document.getElementById("userName");
+      const continueBtn = document.getElementById("continueBtn");
+      const displayName = document.getElementById("displayName");
+      const celebrationName = document.getElementById("celebrationName");
+      const thoughtsInput = document.getElementById("thoughts");
+      const charCount = document.getElementById("char-count");
+      const yesBtn = document.getElementById("yesBtn");
+      const noBtn = document.getElementById("noBtn");
+      const celebration = document.getElementById("celebration");
+      const successMessage = document.getElementById("successMessage");
+      const pioneerForm = document.getElementById("pioneerForm");
+
+      // Form field elements
+      const submitterName = document.getElementById("submitterName");
+      const submitterThoughts = document.getElementById("submitterThoughts");
+      const submitterDecision = document.getElementById("submitterDecision");
+
+      let currentUserName = "";
+
+      // Continue to decision page
+      continueBtn.addEventListener("click", function () {
+        const name = userNameInput.value.trim();
+
+        if (name) {
+          currentUserName = name;
+          displayName.textContent = name;
+          celebrationName.textContent = name;
+          submitterName.value = name;
+
+          namePage.classList.remove("active");
+          decisionPage.classList.add("active");
+        } else {
+          userNameInput.style.animation = "shake 0.5s";
+          setTimeout(() => {
+            userNameInput.style.animation = "";
+          }, 500);
+          userNameInput.focus();
+        }
+      });
+
+      // Character count update
+      thoughtsInput.addEventListener("input", function () {
+        const count = thoughtsInput.value.length;
+        charCount.textContent = count;
+
+        if (count > 0) {
+          yesBtn.disabled = false;
+          noBtn.disabled = false;
+        } else {
+          yesBtn.disabled = true;
+          noBtn.disabled = true;
+        }
+      });
+
+      // Yes button click
+      yesBtn.addEventListener("click", function () {
+        submitToEmail("Yes");
+      });
+
+      // No button click - changes to Yes
+      noBtn.addEventListener("click", function () {
+        noBtn.textContent = "Yes, I'm In!";
+        noBtn.classList.remove("no-btn");
+        noBtn.classList.add("yes-btn");
+
+        noBtn.onclick = function () {
+          submitToEmail("Yes");
+        };
+      });
+
+      // Submit to Email via FormSubmit
+      function submitToEmail(decision) {
+        // Update form fields
+        submitterThoughts.value = thoughtsInput.value;
+        submitterDecision.value = decision;
+
+        // Show celebration
+        celebration.style.display = "flex";
+        createConfetti();
+
+        // Show success message
+        successMessage.style.display = "block";
+
+        // Submit the form after a short delay to show celebration
+        setTimeout(() => {
+          pioneerForm.submit();
+        }, 3000);
+      }
+
+      function closeCelebration() {
+        celebration.style.display = "none";
+      }
+
+      // Create confetti effect
+      function createConfetti() {
+        const colors = [
+          "#ff0000",
+          "#00ff00",
+          "#0000ff",
+          "#ffff00",
+          "#ff00ff",
+          "#00ffff",
+        ];
+        const celebrationArea = document.querySelector(".celebration");
+
+        // Clear existing confetti
+        const existingConfetti = celebrationArea.querySelectorAll(".confetti");
+        existingConfetti.forEach((confetti) => confetti.remove());
+
+        for (let i = 0; i < 150; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.left = Math.random() * 100 + "vw";
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.width = Math.random() * 10 + 5 + "px";
+          confetti.style.height = Math.random() * 10 + 5 + "px";
+          confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+          confetti.style.animationDelay = Math.random() * 5 + "s";
+          celebrationArea.appendChild(confetti);
+        }
+      }
+
+      // Add shake animation for validation
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
